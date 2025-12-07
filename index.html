@@ -1,298 +1,108 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CYUBAHIRO QUEEN| Portfolio</title>
-    <!-- Load Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Configure Tailwind for custom font (Inter is the default, but explicitly setting for clarity) -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'primary': '#14b8a6', // Teal 500
-                        'secondary': '#374151', // Gray 700
-                        'background': '#0f172a', // Slate 900
-                        'text-light': '#f1f5f9', // Slate 100
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        /* Apply custom font and background to body */
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0f172a; /* background */
-            color: #f1f5f9; /* text-light */
-        }
-        /* Style for the navigation links */
-        .nav-link:hover {
-            color: #14b8a6; /* primary */
-            transition: color 0.3s;
-        }
-        /* Custom scroll-padding for smooth scrolling with fixed header */
-        html {
-            scroll-padding-top: 5rem;
-            scroll-behavior: smooth;
-        }
-        /* Project card hover effect */
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>LumaLens Photography — Home</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Optional: link to Google fonts (user add if online) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600;800&display=swap" rel="stylesheet">
 </head>
-<body class="antialiased">
-
-    <!-- Header & Navigation -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm shadow-lg">
-        <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <a href="#home" class="text-2xl font-bold text-primary tracking-wider">Alex Johnson</a>
-            
-            <!-- Desktop Menu -->
-            <div class="hidden md:flex space-x-8">
-                <a href="#about" class="nav-link text-text-light font-medium">About</a>
-                <a href="#skills" class="nav-link text-text-light font-medium">Skills</a>
-                <a href="#projects" class="nav-link text-text-light font-medium">Projects</a>
-                <a href="#contact" class="nav-link text-text-light font-medium">Contact</a>
-            </div>
-
-            <!-- Mobile Menu Button (Hamburger) -->
-            <button id="menu-button" class="md:hidden text-text-light focus:outline-none">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-            </button>
-        </nav>
-        
-        <!-- Mobile Menu (Hidden by Default) -->
-        <div id="mobile-menu" class="hidden md:hidden bg-background">
-            <a href="#about" class="block py-2 px-4 text-text-light hover:bg-secondary/50" onclick="document.getElementById('mobile-menu').classList.add('hidden')">About</a>
-            <a href="#skills" class="block py-2 px-4 text-text-light hover:bg-secondary/50" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Skills</a>
-            <a href="#projects" class="block py-2 px-4 text-text-light hover:bg-secondary/50" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Projects</a>
-            <a href="#contact" class="block py-2 px-4 text-text-light hover:bg-secondary/50" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Contact</a>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <img src="logo.svg" alt="LumaLens logo">
+        <div>
+          <h1>LumaLens</h1>
+          <div style="font-size:.85rem;color:var(--muted)">Fine art & commercial photography</div>
         </div>
-    </header>
+      </div>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="products.html">Products</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div style="display:flex;gap:0.5rem;align-items:center">
+        <button id="theme-toggle" class="btn ghost" title="Toggle theme">🌙 Dark</button>
+        <a class="cta" href="products.html">Book a Shoot</a>
+      </div>
+    </div>
+  </header>
 
-    <main class="pt-20">
-        
-        <!-- 1. Hero Section -->
-        <section id="home" class="container mx-auto px-4 sm:px-6 lg:px-8 py-20 min-h-screen flex items-center justify-center">
-            <div class="text-center max-w-4xl">
-                <p class="text-xl sm:text-2xl text-primary mb-4 font-semibold">Hello, I'm</p>
-                <h1 class="text-5xl sm:text-7xl lg:text-8xl font-extrabold mb-6 leading-tight">
-                    CYUBAHIRO QUEEN 
-                </h1>
-                <p class="text-2xl sm:text-3xl text-text-light/80 mb-8 font-light">
-                    A Full Stack Developer and UI/UX Designer crafting clean, powerful web experiences.
-                </p>
-                <a href="#projects" class="inline-block bg-primary text-background font-bold py-3 px-8 rounded-full shadow-lg hover:bg-primary/80 transition duration-300 transform hover:scale-105">
-                    View My Work
-                </a>
-                <a href="#contact" class="inline-block ml-4 text-text-light border-2 border-primary font-bold py-3 px-8 rounded-full shadow-lg hover:bg-primary/20 transition duration-300">
-                    Get In Touch
-                </a>
-            </div>
-        </section>
+  <main>
+    <section class="container hero" aria-label="Hero section">
+      <div>
+        <div class="kicker">Studio & Workshops</div>
+        <h2>Create timeless images — LumaLens portrait & studio photography</h2>
+        <p class="lead">Natural-light sessions, professional editing, and tailored packages for individuals, couples, and businesses. Browse our portfolio, purchase presets, or book a session.</p>
+        <a class="cta" href="contact.html">Book a Session</a>
+        <a class="cta secondary" href="products.html" style="margin-left:0.5rem">Shop Presets</a>
 
-        <!-- 2. About Section -->
-        <section id="about" class="py-20 bg-secondary/30">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
-                <h2 class="text-4xl font-bold text-center mb-12 border-b-4 border-primary inline-block pb-1">About Me</h2>
-                
-                <div class="grid md:grid-cols-3 gap-8 items-center">
-                    <div class="md:col-span-1 flex justify-center">
-                        <!-- Placeholder for an image (using a styled div) -->
-                        <div class="w-48 h-48 bg-primary/20 rounded-full flex items-center justify-center border-4 border-primary shadow-xl">
-                            <span class="text-2xl font-bold text-primary">AJ</span>
-                        </div>
-                    </div>
-                    <div class="md:col-span-2 text-lg leading-relaxed">
-                        <p class="mb-4">
-                            I am a passionate developer with over five years of experience building and deploying modern web applications. My expertise lies in bridging the gap between design and functionality, ensuring every project is not just robust, but also intuitive and visually appealing.
-                        </p>
-                        <p class="mb-4">
-                            My journey started with a fascination for how technology solves real-world problems. Today, I specialize in the **MERN stack**, focusing on scalable backend architectures and dynamic, accessible user interfaces. I believe that the best code is clean, well-documented, and contributes positively to the user experience.
-                        </p>
-                        <p>
-                            Outside of coding, I enjoy digital illustration and contributing to open-source projects. I'm always looking for the next challenging project to sink my teeth into!
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 3. Skills Section -->
-        <section id="skills" class="py-20">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-4xl font-bold text-center mb-12 border-b-4 border-primary inline-block pb-1">Skills & Expertise</h2>
-
-                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 max-w-6xl mx-auto">
-                    <!-- Skill Card Template -->
-                    <div class="bg-secondary/50 p-6 rounded-xl text-center shadow-lg hover:bg-secondary transition duration-300">
-                        <div class="text-3xl mb-2 text-primary">💻</div>
-                        <p class="font-semibold">JavaScript / TypeScript</p>
-                    </div>
-                    
-                    <div class="bg-secondary/50 p-6 rounded-xl text-center shadow-lg hover:bg-secondary transition duration-300">
-                        <div class="text-3xl mb-2 text-primary">⚛️</div>
-                        <p class="font-semibold">React & Next.js</p>
-                    </div>
-                    
-                    <div class="bg-secondary/50 p-6 rounded-xl text-center shadow-lg hover:bg-secondary transition duration-300">
-                        <div class="text-3xl mb-2 text-primary">🎨</div>
-                        <p class="font-semibold">Tailwind CSS / SCSS</p>
-                    </div>
-
-                    <div class="bg-secondary/50 p-6 rounded-xl text-center shadow-lg hover:bg-secondary transition duration-300">
-                        <div class="text-3xl mb-2 text-primary">🍃</div>
-                        <p class="font-semibold">Node.js / Express</p>
-                    </div>
-                    
-                    <div class="bg-secondary/50 p-6 rounded-xl text-center shadow-lg hover:bg-secondary transition duration-300">
-                        <div class="text-3xl mb-2 text-primary">📁</div>
-                        <p class="font-semibold">MongoDB / SQL</p>
-                    </div>
-                    
-                    <div class="bg-secondary/50 p-6 rounded-xl text-center shadow-lg hover:bg-secondary transition duration-300">
-                        <div class="text-3xl mb-2 text-primary">☁️</div>
-                        <p class="font-semibold">AWS / Firebase</p>
-                    </div>
-                    <!-- End Skill Card Template -->
-                </div>
-
-                <div class="text-center mt-12">
-                    <p class="text-text-light/70">I also use **Python**, **Figma**, and **Git** for version control.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 4. Projects Section -->
-        <section id="projects" class="py-20 bg-secondary/30">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-4xl font-bold text-center mb-12 border-b-4 border-primary inline-block pb-1">Featured Projects</h2>
-
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
-                    
-                    <!-- Project 1 -->
-                    <div class="project-card bg-secondary rounded-xl overflow-hidden shadow-xl transition duration-300">
-                        <!-- Placeholder Image -->
-                        <div class="h-48 bg-primary/20 flex items-center justify-center">
-                            <span class="text-xl font-bold text-primary">E-commerce Platform UI</span>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-2xl font-semibold mb-3 text-primary">ModernCart</h3>
-                            <p class="text-text-light/80 mb-4">A complete redesign of a retail e-commerce interface, focusing on mobile-first design, accessibility, and fast load times. Built with React and Zustand.</p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="text-sm bg-primary/20 text-primary px-3 py-1 rounded-full">React</span>
-                                <span class="text-sm bg-primary/20 text-primary px-3 py-1 rounded-full">Tailwind</span>
-                                <span class="text-sm bg-primary/20 text-primary px-3 py-1 rounded-full">Zustand</span>
-                            </div>
-                            <a href="#" class="text-primary hover:text-primary/80 font-medium">View Project →</a>
-                        </div>
-                    </div>
-
-                    <!-- Project 2 -->
-                    <div class="project-card bg-secondary rounded-xl overflow-hidden shadow-xl transition duration-300">
-                        <!-- Placeholder Image -->
-                        <div class="h-48 bg-primary/20 flex items-center justify-center">
-                            <span class="text-xl font-bold text-primary">Data Visualization Dashboard</span>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-2xl font-semibold mb-3 text-primary">Analytics Engine</h3>
-                            <p class="text-text-light/80 mb-4">A real-time data monitoring dashboard that processes large datasets. Features custom chart components and role-based access control. Backend on Node/Express.</p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="text-sm bg-primary/20 text-primary px-3 py-1 rounded-full">Node.js</span>
-                                <span class="text-sm bg-primary/20 text-primary px-3 py-1 rounded-full">D3.js</span>
-                                <span class="text-sm bg-primary/20 text-primary px-3 py-1 rounded-full">MongoDB</span>
-                            </div>
-                            <a href="#" class="text-primary hover:text-primary/80 font-medium">View Project →</a>
-                        </div>
-                    </div>
-
-                    <!-- Project 3 -->
-                    <div class="project-card bg-secondary rounded-xl overflow-hidden shadow-xl transition duration-300">
-                        <!-- Placeholder Image -->
-                        <div class="h-48 bg-primary/20 flex items-center justify-center">
-                            <span class="text-xl font-bold text-primary">AI Chatbot Integration</span>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-2xl font-semibold mb-3 text-primary">Prompt Pal</h3>
-                            <p class="text-text-light/80 mb-4">A conversational AI interface integrated with the Gemini API. Focuses on minimal latency and smooth, responsive chat history rendering.</p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="text-sm bg-primary/20 text-primary px-3 py-1 rounded-full">API Integration</span>
-                                <span class="text-sm bg-primary/20 text-primary px-3 py-1 rounded-full">TypeScript</span>
-                                <span class="text-sm bg-primary/20 text-primary px-3 py-1 rounded-full">Jest</span>
-                            </div>
-                            <a href="#" class="text-primary hover:text-primary/80 font-medium">View Project →</a>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- 5. Contact Section -->
-        <section id="contact" class="py-20">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
-                <h2 class="text-4xl font-bold text-center mb-12 border-b-4 border-primary inline-block pb-1">Get In Touch</h2>
-                <p class="text-center text-lg mb-8 text-text-light/80">
-                    I'm currently available for freelance opportunities or full-time roles. Send me a message, and let's build something amazing together!
-                </p>
-
-                <form action="#" method="POST" class="space-y-6 bg-secondary/50 p-8 rounded-xl shadow-2xl">
-                    <div>
-                        <label for="name" class="block text-sm font-medium text-text-light mb-1">Name</label>
-                        <input type="text" id="name" name="name" required class="w-full px-4 py-3 bg-secondary border border-primary/50 rounded-lg text-text-light focus:ring-primary focus:border-primary placeholder-text-light/50" placeholder="Your Name">
-                    </div>
-                    <div>
-                        <label for="email" class="block text-sm font-medium text-text-light mb-1">Email</label>
-                        <input type="email" id="email" name="email" required class="w-full px-4 py-3 bg-secondary border border-primary/50 rounded-lg text-text-light focus:ring-primary focus:border-primary placeholder-text-light/50" placeholder="your.email@example.com">
-                    </div>
-                    <div>
-                        <label for="message" class="block text-sm font-medium text-text-light mb-1">Message</label>
-                        <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 bg-secondary border border-primary/50 rounded-lg text-text-light focus:ring-primary focus:border-primary placeholder-text-light/50" placeholder="Tell me about your project..."></textarea>
-                    </div>
-                    <div class="text-center">
-                        <button type="submit" class="w-full sm:w-auto bg-primary text-background font-bold py-3 px-10 rounded-full shadow-xl hover:bg-primary/80 transition duration-300 transform hover:scale-[1.02]">
-                            Send Message
-                        </button>
-                    </div>
-                </form>
-
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-secondary/50 mt-12">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-text-light/70">
-            <div class="flex justify-center space-x-6 mb-4">
-                <a href="#" class="text-xl hover:text-primary transition duration-300" aria-label="LinkedIn Profile">
-                    <!-- LinkedIn Icon (Inline SVG) -->
-                    <svg class="w-6 h-6 inline-block" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM4 9h4v12H4zM6 7a2 2 0 100-4 2 2 0 000 4z"/></svg>
-                </a>
-                <a href="#" class="text-xl hover:text-primary transition duration-300" aria-label="GitHub Profile">
-                    <!-- GitHub Icon (Inline SVG) -->
-                    <svg class="w-6 h-6 inline-block" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.418 2.864 8.136 6.837 9.489.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.37-1.341-3.37-1.341-.454-1.156-1.107-1.46-1.107-1.46-.908-.62.068-.608.068-.608 1.007.07 1.532 1.03 1.532 1.03.89 1.529 2.348 1.089 2.914.833.092-.647.359-1.083.653-1.332-2.22-.251-4.555-1.115-4.555-4.942 0-1.09.39-1.983 1.029-2.684-.103-.252-.447-1.27.097-2.646 0 0 .84-.27 2.75 1.025A9.526 9.526 0 0112 6.326c.854.004 1.705.114 2.502.324 1.909-1.295 2.748-1.025 2.748-1.025.546 1.376.202 2.394.097 2.646.64.701 1.028 1.594 1.028 2.684 0 3.835-2.339 4.686-4.566 4.935.36.309.678.92.678 1.855 0 1.334-.012 2.41-.012 2.73 0 .267.18.58.688.484C21.139 20.15 24 16.435 24 12.017 24 6.484 19.522 2 14 2z" clip-rule="evenodd"/></svg>
-                </a>
-            </div>
-            <p>&copy; 2025 Alex Johnson. All rights reserved. | Built with Tailwind CSS.</p>
+        <h3 style="margin-top:1.75rem">Our featured services</h3>
+        <div class="grid" style="margin-top:0.75rem">
+          <article class="card">
+            <img src="https://via.placeholder.com/600x360?text=Portraits" alt="Portrait sample">
+            <h3>Portrait Sessions</h3>
+            <p>Personal & family portraits in-studio or on-location. Sessions include 20 edited images.</p>
+          </article>
+          <article class="card">
+            <img src="https://via.placeholder.com/600x360?text=Weddings" alt="Weddings sample">
+            <h3>Wedding Packages</h3>
+            <p>Full-day and half-day packages with optional album printing and extra shooters.</p>
+          </article>
+          <article class="card">
+            <img src="https://via.placeholder.com/600x360?text=Product+Photography" alt="Product sample">
+            <h3>Product Photography</h3>
+            <p>Studio product shots perfect for online stores and catalogs.</p>
+          </article>
         </div>
-    </footer>
+      </div>
 
-    <!-- JavaScript for Mobile Menu Toggle -->
-    <script>
-        document.getElementById('menu-button').addEventListener('click', function() {
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenu.classList.toggle('hidden');
-        });
-    </script>
+      <!-- Right: carousel -->
+      <aside class="right">
+        <div id="hero-carousel" class="card" style="padding:0;overflow:hidden">
+          <div class="slide"><img src="https://via.placeholder.com/420x360?text=Shot+1" alt="Shot 1" style="width:100%;height:360px;object-fit:cover"></div>
+          <div class="slide"><img src="https://via.placeholder.com/420x360?text=Shot+2" alt="Shot 2" style="width:100%;height:360px;object-fit:cover"></div>
+          <div class="slide"><img src="https://via.placeholder.com/420x360?text=Shot+3" alt="Shot 3" style="width:100%;height:360px;object-fit:cover"></div>
+          <button class="prev" aria-label="Previous" style="position:absolute;left:8px;top:50%;transform:translateY(-50%);background:none;border:none;font-size:1.2rem;padding:.5rem">◀</button>
+          <button class="next" aria-label="Next" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:none;font-size:1.2rem;padding:.5rem">▶</button>
+        </div>
+        <div style="margin-top:.75rem;text-align:center;color:var(--muted)">Portfolio highlights</div>
+      </aside>
+    </section>
+
+    <section class="container" aria-label="Popular presets">
+      <h3>Presets & Prints</h3>
+      <div class="grid" style="margin-top:.75rem">
+        <article class="card">
+          <img src="https://via.placeholder.com/400x260?text=Preset+Pack" alt="Preset pack">
+          <h3>Signature Preset Pack</h3>
+          <p>Handcrafted color & film-style presets for Lightroom. $24</p>
+        </article>
+        <article class="card">
+          <img src="https://via.placeholder.com/400x260?text=Fine+Art+Print" alt="Fine art print">
+          <h3>Fine Art Prints</h3>
+          <p>High-quality prints in multiple sizes. Starting at $35</p>
+        </article>
+        <article class="card">
+          <img src="https://via.placeholder.com/400x260?text=Workshop" alt="Workshop">
+          <h3>Weekend Workshop</h3>
+          <p>Small-group hands-on photography workshop. $120</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap">
+      <div>&copy; <span id="year"></span> LumaLens Photography — All rights reserved</div>
+      <div style="color:var(--muted)">Studio: Kigali • Email: hello@lumalens.co</div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
